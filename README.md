@@ -53,8 +53,22 @@ __Supervised Learning __
 
 
 The algorithm learns the relationship between input and output from past examples and then uses that learning to predict results for new data.
+lets start with the Regression algorithums.
+
+1.**Regression algorithum**------
+
+1) linear regression-
+how it works?
+it Takes your data (x, y)
+Draws many possible lines
+Picks the best line that is closest to all points
+This line is called:
+👉 Line of Best Fit
 
 
 
+3) logistic regression-
+
+   
 
 
