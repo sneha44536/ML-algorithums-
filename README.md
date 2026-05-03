@@ -79,6 +79,14 @@ Many inputs
 Example: marks = f(hours, sleep, practice)
 
 
+
+Evalation mtx : what it do it check “How good is my model’s prediction?”.
+
+Mean Absolute Error (MAE) :
+
+
+
+
 3) logistic regression-
 
    
