@@ -64,7 +64,19 @@ Draws many possible lines
 Picks the best line that is closest to all points
 This line is called:
 👉 Line of Best Fit
+How it works (basic steps)
+Assume a line → y = mx + b
+Check error (difference between real & predicted values)
+Adjust m and b
+Repeat until error is minimum
 
+
+📉 Types
+Simple Linear Regression  -> depend on 1 input 
+One input (x → y)
+Multiple Linear Regression  -> depend on multiple input
+Many inputs
+Example: marks = f(hours, sleep, practice)
 
 
 3) logistic regression-
