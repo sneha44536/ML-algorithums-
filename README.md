@@ -280,6 +280,7 @@ Lower value = better split
 
 
         Entropy=−∑pi​log2​(pi​)
+   
 Measures randomness in data
 Tree selects split with highest information gain
 
