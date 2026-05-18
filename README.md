@@ -9,6 +9,7 @@ where we use the machines (machine complete it within a sec ) it finds the patte
 
 Algorithums -- A set of the code contains the steps and the rules to solve the real worls problem in the effective way .
 
+
 Machine Learning
 │
 ├── 1. Supervised Learning (has labels / answers)
