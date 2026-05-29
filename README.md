@@ -8,8 +8,6 @@ In the daily life there are some task which are  not able to do or completable b
 where we use the machines (machine complete it within a sec ) it finds the patterns and work and give the results accordingly .
 
 Algorithums -- A set of the code contains the steps and the rules to solve the real worls problem in the effective way .
-
-
 Machine Learning
 │
 ├── 1. Supervised Learning (has labels / answers)
