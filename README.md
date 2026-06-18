@@ -276,8 +276,6 @@ Lower value = better split
 
 2. Entropy (Information Gain)
 
-
-
         Entropy=−∑pi​log2​(pi​)
    
 Measures randomness in data
