@@ -295,3 +295,566 @@ Less accurate compared to ensemble models
 
 
 
+# 3) Random Forest 🌲🌲🌲
+
+**Random Forest is a supervised learning algorithm that combines multiple Decision Trees to make more accurate and stable predictions.**
+
+It works on the idea that **many weak models together create one strong model.**
+
+---
+
+# What is Random Forest?
+
+A **Random Forest** is an **ensemble learning algorithm** that builds **many Decision Trees** and combines their predictions.
+
+Used for both:
+
+- Classification (Predict Category)
+- Regression (Predict Number)
+
+---
+
+# Core Idea
+
+```
+Input → Features (X)
+
+↓
+
+Many Decision Trees are built
+
+↓
+
+Each Tree gives its own prediction
+
+↓
+
+Final Prediction
+
+Classification → Majority Voting
+
+Regression → Average of all outputs
+```
+
+Instead of trusting **one Decision Tree**, Random Forest trusts the **opinion of many Decision Trees**.
+
+---
+
+# Why Random Forest?
+
+A single Decision Tree can:
+
+- Overfit the training data
+- Change significantly with small changes in data
+
+Random Forest solves these problems by:
+
+- Creating multiple trees
+- Training each tree on different data
+- Combining all predictions
+
+Result:
+
+- Higher Accuracy
+- Less Overfitting
+- Better Generalization
+
+---
+
+# Structure of Random Forest
+
+```
+Training Data
+
+↓
+
+Bootstrap Sampling
+
+↓
+
+Tree 1
+
+Tree 2
+
+Tree 3
+
+...
+
+Tree N
+
+↓
+
+Voting / Averaging
+
+↓
+
+Final Prediction
+```
+
+---
+
+# How Random Forest Works
+
+## Step 1 → Bootstrap Sampling
+
+Random Forest creates multiple datasets from the original dataset.
+
+This process is called:
+
+**Bootstrap Sampling (Sampling with Replacement)**
+
+Example:
+
+Original Dataset
+
+```
+A B C D E
+```
+
+Tree 1 receives
+
+```
+A C C D E
+```
+
+Tree 2 receives
+
+```
+B A D E E
+```
+
+Tree 3 receives
+
+```
+A B B C D
+```
+
+Notice:
+
+- Some rows repeat.
+- Some rows are missing.
+- Every tree gets different training data.
+
+---
+
+## Step 2 → Random Feature Selection
+
+Unlike a Decision Tree,
+
+Random Forest **does not consider all features** while splitting.
+
+Instead, it randomly selects only a subset of features.
+
+Example
+
+Available Features
+
+```
+Age
+
+Salary
+
+Experience
+
+Gender
+
+City
+```
+
+Tree may randomly choose only
+
+```
+Salary
+
+Experience
+
+City
+```
+
+This makes every tree different.
+
+---
+
+## Step 3 → Build Decision Trees
+
+Each tree is trained independently using its own sampled data.
+
+Every tree follows the Decision Tree algorithm.
+
+```
+Best Split
+
+↓
+
+Left Child
+
+↓
+
+Right Child
+
+↓
+
+Leaf Node
+```
+
+---
+
+## Step 4 → Final Prediction
+
+Every tree predicts independently.
+
+Example
+
+```
+Tree 1 → Buy
+
+Tree 2 → Buy
+
+Tree 3 → Not Buy
+
+Tree 4 → Buy
+
+Tree 5 → Buy
+```
+
+Final Output
+
+```
+Buy
+```
+
+because **Buy** receives the majority vote.
+
+---
+
+# Classification
+
+Output = Category
+
+Examples
+
+- Spam / Not Spam
+- Fraud / Normal
+- Disease / Healthy
+
+Random Forest combines predictions using **Majority Voting**.
+
+### Formula
+
+```
+Prediction = Mode(Tree₁, Tree₂, Tree₃, ..., Treeₙ)
+```
+
+Mathematical Formula
+
+```
+ŷ = mode(T₁, T₂, T₃, ..., Tₙ)
+```
+
+---
+
+# Regression
+
+Output = Number
+
+Example
+
+```
+Tree 1 → 220
+
+Tree 2 → 210
+
+Tree 3 → 230
+
+Tree 4 → 225
+```
+
+Final Output
+
+```
+(220 + 210 + 230 + 225) / 4
+
+= 221.25
+```
+
+### Formula
+
+```
+ŷ = (1/N) × Σ Ti(x)
+```
+
+Where
+
+- N = Number of Trees
+- Ti(x) = Prediction of ith Tree
+
+---
+
+# Complete Flow
+
+```
+Training Data
+
+↓
+
+Bootstrap Sampling
+
+↓
+
+Random Feature Selection
+
+↓
+
+Build Multiple Decision Trees
+
+↓
+
+Each Tree Predicts
+
+↓
+
+Classification
+      ↓
+Majority Voting
+
+OR
+
+Regression
+      ↓
+Average Prediction
+
+↓
+
+Final Output
+```
+
+---
+
+# How Random Forest Chooses the Best Split
+
+Each Decision Tree inside the Random Forest uses impurity measures.
+
+---
+
+## 1. Gini Impurity
+
+### Formula
+
+```
+Gini = 1 − Σ(pi²)
+```
+
+Where
+
+- pi = Probability of each class
+
+Lower Gini = Better Split
+
+### Example
+
+Suppose
+
+```
+Buy = 70%
+
+Not Buy = 30%
+```
+
+Calculation
+
+```
+Gini
+
+= 1 − (0.7² + 0.3²)
+
+= 1 − (0.49 + 0.09)
+
+= 0.42
+```
+
+The algorithm chooses the split having the **lowest Gini value**.
+
+---
+
+## 2. Entropy
+
+### Formula
+
+```
+Entropy = − Σ pi log₂(pi)
+```
+
+Measures randomness in the dataset.
+
+Lower Entropy = Better Split
+
+---
+
+## Information Gain
+
+Random Forest selects the split having the **highest Information Gain**.
+
+### Formula
+
+```
+Information Gain
+
+= Entropy(Parent)
+
+− Weighted Entropy(Children)
+```
+
+Higher Information Gain = Better Split
+
+---
+
+# Hyperparameters
+
+## 1. n_estimators
+
+Number of Decision Trees.
+
+Example
+
+```
+100 Trees
+
+200 Trees
+
+500 Trees
+```
+
+More trees generally increase accuracy but also increase training time.
+
+---
+
+## 2. max_depth
+
+Maximum depth of each Decision Tree.
+
+Higher Depth
+
+- More learning
+- More chance of overfitting
+
+---
+
+## 3. min_samples_split
+
+Minimum number of samples required to split a node.
+
+---
+
+## 4. min_samples_leaf
+
+Minimum number of samples required in a leaf node.
+
+---
+
+## 5. max_features
+
+Number of random features considered at each split.
+
+Example
+
+```
+sqrt(total_features)
+
+log2(total_features)
+
+All Features
+```
+
+---
+
+# Out-of-Bag (OOB) Error
+
+Since bootstrap sampling leaves some data unused,
+
+those unused samples are called **Out-of-Bag (OOB) samples**.
+
+These samples are used to evaluate the model without needing a separate validation dataset.
+
+Benefits
+
+- Estimates model accuracy
+- Detects overfitting
+- No separate validation set required
+
+---
+
+# Feature Importance
+
+Random Forest ranks features based on their contribution to reducing impurity.
+
+Example
+
+```
+Salary → 45%
+
+Experience → 30%
+
+Age → 15%
+
+City → 10%
+```
+
+Higher value means the feature is more important.
+
+---
+
+# Advantages
+
+- High Accuracy
+- Reduces Overfitting
+- Works for Classification and Regression
+- Handles Numerical and Categorical Data
+- Robust to Noise and Outliers
+- Works well on Large Datasets
+- Provides Feature Importance
+- More Stable than a Decision Tree
+
+---
+
+# Disadvantages
+
+- Slower than a Decision Tree
+- Requires More Memory
+- Difficult to Interpret
+- Longer Training Time
+- Computationally Expensive for Very Large Datasets
+
+---
+
+# Decision Tree vs Random Forest
+
+| Feature | Decision Tree | Random Forest |
+|----------|---------------|---------------|
+| Number of Trees | One | Many |
+| Accuracy | Moderate | High |
+| Overfitting | High | Low |
+| Stability | Low | High |
+| Speed | Faster | Slower |
+| Interpretability | Easy | Difficult |
+| Feature Importance | Yes | Yes (More Reliable) |
+| Classification | ✅ | ✅ |
+| Regression | ✅ | ✅ |
+
+---
+
+# Interview Revision (30 Seconds)
+
+- Random Forest is an **ensemble learning algorithm** based on **Bagging**.
+- It builds **multiple Decision Trees** using **Bootstrap Sampling**.
+- Each tree uses **Random Feature Selection**.
+- Classification → **Majority Voting**.
+- Regression → **Average Prediction**.
+- Uses **Gini Impurity** or **Entropy (Information Gain)** for splitting.
+- Reduces **Overfitting** and improves **Accuracy**.
+- Supports **Feature Importance** and **Out-of-Bag (OOB) Error**.
+- Important Hyperparameters:
+  - n_estimators
+  - max_depth
+  - min_samples_split
+  - min_samples_leaf
+  - max_features
