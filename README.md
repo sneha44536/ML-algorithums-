@@ -8,7 +8,8 @@ Instead of writing rules for every task, we provide data, and the machine learns
 
 ---
 
-# Why do we use Machine Learning?
+
+# Why do we use Machine Learning ?
 
 In daily life, there are many problems that are difficult or time-consuming for humans to solve manually.
 
