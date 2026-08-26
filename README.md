@@ -586,7 +586,8 @@ Model Deployment
 
 
 
-# 3) Random Forest 🌲🌲🌲
+
+# 3) Random Forest 🌲
 
 **Random Forest is a supervised learning algorithm that combines multiple Decision Trees to make more accurate and stable predictions.**
 
@@ -1132,6 +1133,7 @@ Higher value means the feature is more important.
 | Regression | ✅ | ✅ |
 
 ---
+
 
 # Interview Revision (30 Seconds)
 
