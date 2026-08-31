@@ -1,11 +1,5 @@
 # Machine Learning (ML)
 
-
-
-
-
-
-
 ## What is Machine Learning?
 
 **Machine Learning (ML)** is a branch of **Artificial Intelligence (AI)** in which computers learn patterns from historical data and improve their performance **without being explicitly programmed**.
